@@ -1,0 +1,10 @@
+/.vs
+/Encrypt/obj
+/Encrypt/bin
+/StringConverter/StringConverter/obj
+/StringConverter/StringConverter/bin
+/StringConverter/StringConverter.Android/StringConverter.Android.csproj.user
+/StringConverter/StringConverter.Android/bin
+/StringConverter/StringConverter.Android/obj
+/StringConverter/StringConverter.iOS/bin
+/StringConverter/StringConverter.iOS/obj

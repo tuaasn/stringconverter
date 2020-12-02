@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="StringConverter.Views.NormalCodePage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="10" Spacing="10">
+                <ImageButton Command="{Binding CopyCommand}"
+                             HorizontalOptions="End"
+                             Source="copy" />
+                <Editor AutoSize="TextChanges"
+                        HeightRequest="260"
+                        IsSpellCheckEnabled="False"
+                        Text="{Binding SourceText}" />
+                <Button BackgroundColor="#006dcc"
+                        Command="{Binding ProcessCommand}"
+                        CornerRadius="3"
+                        HorizontalOptions="End"
+                        Text="Decode" />
+                <ImageButton Command="{Binding CopyCommand}"
+                             HorizontalOptions="End"
+                             Source="copy" />
+                <Editor AutoSize="TextChanges"
+                        HeightRequest="260"
+                        IsSpellCheckEnabled="False"
+                        Text="{Binding DestinationText}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
