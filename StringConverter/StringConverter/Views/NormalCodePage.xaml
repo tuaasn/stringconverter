@@ -1,7 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage x:Class="StringConverter.Views.NormalCodePage"
              xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:StringConverter.Converters">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BooleanToStringConverter x:Key="firstText"
+                                                 Text1="Paste the text you wish to encode here:"
+                                                 Text2="Paste the text you wish to decode here:" />
+            <converters:BooleanToStringConverter x:Key="secondText"
+                                                 Text1="Copy your encoded text here:"
+                                                 Text2="Copy your decoded text here:" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="10" Spacing="10">
@@ -11,18 +22,20 @@
                 <Editor AutoSize="TextChanges"
                         HeightRequest="260"
                         IsSpellCheckEnabled="False"
+                        Placeholder="{Binding IsEncoded, Converter={StaticResource firstText}}"
                         Text="{Binding SourceText}" />
-                <Button BackgroundColor="#006dcc"
+                <Button BackgroundColor="#539AF0"
                         Command="{Binding ProcessCommand}"
                         CornerRadius="3"
                         HorizontalOptions="End"
-                        Text="Decode" />
+                        Text="{Binding EncodedState}" />
                 <ImageButton Command="{Binding CopyCommand}"
                              HorizontalOptions="End"
                              Source="copy" />
                 <Editor AutoSize="TextChanges"
                         HeightRequest="260"
                         IsSpellCheckEnabled="False"
+                        Placeholder="{Binding IsEncoded, Converter={StaticResource secondText}}"
                         Text="{Binding DestinationText}" />
             </StackLayout>
         </ScrollView>

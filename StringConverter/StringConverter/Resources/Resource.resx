@@ -169,10 +169,10 @@
     <value>Reverse String</value>
   </data>
   <data name="RsaDecoded" xml:space="preserve">
-    <value>RSA Decoded</value>
+    <value>RSA Decoder</value>
   </data>
   <data name="RsaEncoded" xml:space="preserve">
-    <value>RSA Encoded</value>
+    <value>RSA Encoder</value>
   </data>
   <data name="SHA1Hash" xml:space="preserve">
     <value>SHA1 Hash</value>

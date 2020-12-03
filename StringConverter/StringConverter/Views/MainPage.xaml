@@ -9,20 +9,24 @@
         <ResourceDictionary>
             <Style x:Key="titleText" TargetType="Label">
                 <Setter Property="TextColor" Value="#999" />
+                <Setter Property="FontSize" Value="Title" />
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
             <Style x:Key="detailText" TargetType="Label">
                 <Setter Property="TextColor" Value="#0088CC" />
+                <Setter Property="FontSize" Value="Subtitle" />
             </Style>
             <Style TargetType="Frame">
                 <Setter Property="BackgroundColor" Value="#F5F5F5" />
-                <Setter Property="BorderColor" Value="#E3E3E3" />
+                <!--<Setter Property="BorderColor" Value="#539AF0" />-->
                 <Setter Property="HasShadow" Value="False" />
+                <Setter Property="CornerRadius" Value="12" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Margin="20,5">
+            <StackLayout Margin="20,5,20,30">
                 <StackLayout Margin="0,10">
                     <Frame>
                         <StackLayout>
@@ -60,6 +64,14 @@
                                                      Style="{StaticResource detailText}"
                                                      Text="{x:Static resources:Resource.UnicodeDecoder}" />
                             <controls:LabelExtension ClickCommand="{Binding ClickLabelCommand}"
+                                                     FunctionCode="25"
+                                                     Style="{StaticResource detailText}"
+                                                     Text="{x:Static resources:Resource.DecoderCustomPassword}" />
+                            <controls:LabelExtension ClickCommand="{Binding ClickLabelCommand}"
+                                                     FunctionCode="26"
+                                                     Style="{StaticResource detailText}"
+                                                     Text="{x:Static resources:Resource.EncoderCustomPassword}" />
+                            <controls:LabelExtension ClickCommand="{Binding ClickLabelCommand}"
                                                      FunctionCode="9"
                                                      Style="{StaticResource detailText}"
                                                      Text="{x:Static resources:Resource.AESDecoder}" />
@@ -91,14 +103,6 @@
                                                      FunctionCode="16"
                                                      Style="{StaticResource detailText}"
                                                      Text="{x:Static resources:Resource.HtmlEncoder}" />
-                            <controls:LabelExtension ClickCommand="{Binding ClickLabelCommand}"
-                                                     FunctionCode="25"
-                                                     Style="{StaticResource detailText}"
-                                                     Text="{x:Static resources:Resource.DecoderCustomPassword}" />
-                            <controls:LabelExtension ClickCommand="{Binding ClickLabelCommand}"
-                                                     FunctionCode="26"
-                                                     Style="{StaticResource detailText}"
-                                                     Text="{x:Static resources:Resource.EncoderCustomPassword}" />
                         </StackLayout>
                     </Frame>
                 </StackLayout>
@@ -125,7 +129,7 @@
                         </StackLayout>
                     </Frame>
                 </StackLayout>
-                <StackLayout Margin="0,10">
+                <StackLayout Margin="0,15">
                     <Frame>
                         <StackLayout>
                             <controls:LabelExtension Style="{StaticResource titleText}" Text="{x:Static resources:Resource.STRINGFUNCTIONS}" />

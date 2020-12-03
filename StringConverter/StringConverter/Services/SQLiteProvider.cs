@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using StringConverter.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace StringConverter.Services
     public class SQLiteProvider
     {
         private SQLiteAsyncConnection database;
+        private bool isInit = false;
         private SQLiteProvider()
         {
             database = new SQLiteAsyncConnection(
@@ -32,10 +34,26 @@ namespace StringConverter.Services
                 return database;
             }
         }
+        public bool IsInit { get => isInit; }
 
-        public async Task RegisterTable()
+        public async Task InitDatabase()
         {
             await database.CreateTableAsync<History>();
+            isInit = true;
+        }
+
+        public Task<List<History>> GetAllHistory()
+        {
+            return database.Table<History>().ToListAsync();
+        }
+
+        public Task<int> Add(History history)
+        {
+            return database.InsertAsync(history);
+        }
+        public Task<int> Delete(History history)
+        {
+            return database.DeleteAsync(history);
         }
     }
 }

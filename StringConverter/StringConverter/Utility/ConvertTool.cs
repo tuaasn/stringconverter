@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -22,9 +23,9 @@ namespace StringConverter.Utility
                 {
                     return Encoding.UTF8.GetString(Convert.FromBase64String(s));
                 }
-                catch (Exception exp)
+                catch
                 {
-                    return exp.Message;
+                    return string.Empty;
                 }
             }
         }
@@ -147,7 +148,7 @@ namespace StringConverter.Utility
                     result = SHA.ComputeSHA512Hash(sourceText);
                     break;
                 case 21:
-                    result = sourceText.Reverse().ToString();
+                    result = new string(sourceText.Reverse().ToArray());
                     break;
                 case 22:
                     result = sourceText.ToUpper();
@@ -156,7 +157,7 @@ namespace StringConverter.Utility
                     result = sourceText.ToLower();
                     break;
                 case 24:
-                    result = sourceText.ToUpperInvariant();
+                    result = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(sourceText.ToLower());
                     break;
                 default:
                     break;

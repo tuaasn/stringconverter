@@ -214,7 +214,7 @@ namespace StringConverter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RSA Decoded.
+        ///   Looks up a localized string similar to RSA Decoder.
         /// </summary>
         internal static string RsaDecoded {
             get {
@@ -223,7 +223,7 @@ namespace StringConverter.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RSA Encoded.
+        ///   Looks up a localized string similar to RSA Encoder.
         /// </summary>
         internal static string RsaEncoded {
             get {

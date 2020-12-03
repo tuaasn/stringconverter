@@ -9,6 +9,8 @@ namespace StringConverter.ViewModels
     {
         private string sourceText;
         private string destinationText;
+        private bool isEncoded;
+
         public NormalCodeViewModel()
         {
             ProcessCommand = new Command(ExecuteProcessCommand);
@@ -47,6 +49,21 @@ namespace StringConverter.ViewModels
             if (Clipboard.HasText)
             {
                 SourceText = await Clipboard.GetTextAsync();
+            }
+        }
+        public bool IsEncoded
+        {
+            get => isEncoded; set
+            {
+                SetProperty(ref isEncoded, value);
+            }
+        }
+
+        public string EncodedState
+        {
+            get
+            {
+                return isEncoded ? "Encode" : "Decode";
             }
         }
     }

@@ -9,6 +9,7 @@ namespace StringConverter.ViewModels
         public string Password { get => password; set => SetProperty(ref password, value); }
         public override void ExecuteProcessCommand()
         {
+            if (string.IsNullOrEmpty(password)) return;
             DestinationText = ConvertTool.ConvertIncludePassword(FunctionCode, SourceText, Password);
         }
 
