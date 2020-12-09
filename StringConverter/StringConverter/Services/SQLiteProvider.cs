@@ -47,9 +47,19 @@ namespace StringConverter.Services
             return database.Table<History>().ToListAsync();
         }
 
-        public Task<int> Add(History history)
+        public async Task<int> InsertOrUpdate(History history)
         {
-            return database.InsertAsync(history);
+            History dbHistory = await database.Table<History>().FirstOrDefaultAsync(his => his.Id == history.Id);
+            int result = 0;
+            if(dbHistory != null)
+            {
+                result = await database.UpdateAsync(history);
+            }
+            else
+            {
+                result = await database.InsertAsync(history);
+            }
+            return result;
         }
         public Task<int> Delete(History history)
         {

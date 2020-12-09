@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="StringConverter.Views.HistoryPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="rootPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="titleText" TargetType="Label">
+                <Setter Property="TextColor" Value="#999" />
+                <Setter Property="FontSize" Value="Title" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="detailText" TargetType="Label">
+                <Setter Property="TextColor" Value="#0088CC" />
+                <Setter Property="FontSize" Value="Subtitle" />
+            </Style>
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="#F5F5F5" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="CornerRadius" Value="12" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding Histories}"
+                            SelectedItem="{Binding SelectHistory}"
+                            SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="5">
+                            <Frame>
+                                <Grid ColumnDefinitions="4*,1*" RowDefinitions="*,*">
+                                    <Label Grid.Row="0"
+                                           Grid.Column="0"
+                                           Style="{StaticResource titleText}"
+                                           Text="{Binding MethodName}" />
+                                    <ImageButton Grid.RowSpan="2"
+                                                 Grid.Column="1"
+                                                 Command="{Binding BindingContext.RemoveCommand, Source={Reference rootPage}}"
+                                                 CommandParameter="{Binding}"
+                                                 HorizontalOptions="Center"
+                                                 Source="delete.png"
+                                                 VerticalOptions="Center" />
+                                    <Label Grid.Row="1"
+                                           Grid.Column="0"
+                                           LineBreakMode="TailTruncation"
+                                           Style="{StaticResource detailText}"
+                                           Text="{Binding SrcText}" />
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

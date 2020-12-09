@@ -1,5 +1,4 @@
-﻿using StringConverter.Views;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace StringConverter
 {
@@ -8,19 +7,7 @@ namespace StringConverter
         public App()
         {
             InitializeComponent();
-            MainPage = new MainPage();
-        }
-
-        protected override void OnStart()
-        {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
+            MainPage = new AppShell();
         }
     }
 }

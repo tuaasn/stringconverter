@@ -1,7 +1,9 @@
-﻿using StringConverter.Utility;
+﻿using StringConverter.Models;
+using StringConverter.Services;
+using StringConverter.Utility;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace StringConverter.ViewModels
 {
@@ -10,12 +12,14 @@ namespace StringConverter.ViewModels
         private string sourceText;
         private string destinationText;
         private bool isEncoded;
+        protected History history;
 
         public NormalCodeViewModel()
         {
             ProcessCommand = new Command(ExecuteProcessCommand);
             CopyCommand = new Command(ExecuteCopyCommand);
         }
+        public History History { get => history; set => SetProperty(ref history, value); }
 
         public string SourceText
         {
@@ -35,9 +39,14 @@ namespace StringConverter.ViewModels
 
         public Command ProcessCommand { get; set; }
         public Command CopyCommand { get; set; }
-        public virtual void ExecuteProcessCommand()
+        public virtual async void ExecuteProcessCommand()
         {
             DestinationText = ConvertTool.ConvertNormal(FunctionCode, SourceText);
+            if (history == null) history = new History();
+            history.SrcText = SourceText;
+            history.DesText = destinationText;
+            history.Method = FunctionCode;
+            await SQLiteProvider.Instace.InsertOrUpdate(history);
         }
         private async void ExecuteCopyCommand()
         {
@@ -46,10 +55,23 @@ namespace StringConverter.ViewModels
 
         public override async Task OnLoadAsync()
         {
-            if (Clipboard.HasText)
+            IsBusy = true;
+            if(history != null)
+            {
+                SourceText = history.SrcText;
+                FunctionCode = history.Method;
+                DestinationText = history.DesText;
+            }
+            else if (Clipboard.HasText)
             {
                 SourceText = await Clipboard.GetTextAsync();
             }
+
+            if (!SQLiteProvider.Instace.IsInit)
+            {
+                await SQLiteProvider.Instace.InitDatabase();
+            }
+            IsBusy = false;
         }
         public bool IsEncoded
         {

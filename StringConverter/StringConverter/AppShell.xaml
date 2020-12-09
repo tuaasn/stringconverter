@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell x:Class="StringConverter.AppShell"
+       xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:StringConverter.Views"
+       Shell.BackgroundColor="#0088CC"
+       Shell.NavBarIsVisible="False">
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#0088CC" />
+                <Setter Property="Shell.TabBarTitleColor" Value="White" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#B4FFFFFF" />
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar Style="{StaticResource BaseStyle}">
+        <views:MainPage IconImageSource="home.png" />
+        <views:HistoryPage IconImageSource="history.png" />
+    </TabBar>
+</Shell>

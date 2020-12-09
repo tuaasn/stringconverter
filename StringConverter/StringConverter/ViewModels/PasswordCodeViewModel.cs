@@ -1,4 +1,5 @@
-﻿using StringConverter.Utility;
+﻿using StringConverter.Services;
+using StringConverter.Utility;
 using System.Threading.Tasks;
 
 namespace StringConverter.ViewModels
@@ -7,16 +8,31 @@ namespace StringConverter.ViewModels
     {
         private string password;
         public string Password { get => password; set => SetProperty(ref password, value); }
-        public override void ExecuteProcessCommand()
+        public override async void ExecuteProcessCommand()
         {
             if (string.IsNullOrEmpty(password)) return;
             DestinationText = ConvertTool.ConvertIncludePassword(FunctionCode, SourceText, Password);
+            if (history == null) history = new Models.History();
+            history.SrcText = SourceText;
+            history.DesText = DestinationText;
+            history.Password = password;
+            history.Method = FunctionCode;
+            await SQLiteProvider.Instace.InsertOrUpdate(history);
         }
 
-        public override Task OnLoadAsync()
+        public override async Task OnLoadAsync()
         {
-            return Task.CompletedTask;
-            //return base.OnLoadAsync();
+            if (history != null)
+            {
+                SourceText = history.SrcText;
+                password = history.Password;
+                FunctionCode = history.Method;
+                DestinationText = history.DesText;
+            }
+            if (!SQLiteProvider.Instace.IsInit)
+            {
+                await SQLiteProvider.Instace.InitDatabase();
+            }
         }
     }
 }

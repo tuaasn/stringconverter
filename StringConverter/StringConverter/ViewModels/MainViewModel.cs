@@ -1,5 +1,4 @@
 ﻿using StringConverter.Views;
-using System;
 using Xamarin.Forms;
 
 namespace StringConverter.ViewModels
