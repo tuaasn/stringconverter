@@ -165,6 +165,15 @@
   <data name="MD5Hash" xml:space="preserve">
     <value>MD5 Hash</value>
   </data>
+  <data name="Morse" xml:space="preserve">
+    <value>MORSE</value>
+  </data>
+  <data name="MorseDecoder" xml:space="preserve">
+    <value>Morse Decoder</value>
+  </data>
+  <data name="MorseEncoder" xml:space="preserve">
+    <value>Morse Encoder</value>
+  </data>
   <data name="ReverseString" xml:space="preserve">
     <value>Reverse String</value>
   </data>
@@ -185,6 +194,12 @@
   </data>
   <data name="STRINGFUNCTIONS" xml:space="preserve">
     <value>STRING FUNCTIONS</value>
+  </data>
+  <data name="TextStyle" xml:space="preserve">
+    <value>TEXT STYLES</value>
+  </data>
+  <data name="TextToAscii" xml:space="preserve">
+    <value>Text to ASCII</value>
   </data>
   <data name="TitleCaseString" xml:space="preserve">
     <value>Title Case String</value>

@@ -205,6 +205,33 @@ namespace StringConverter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MORSE.
+        /// </summary>
+        internal static string Morse {
+            get {
+                return ResourceManager.GetString("Morse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Morse Decoder.
+        /// </summary>
+        internal static string MorseDecoder {
+            get {
+                return ResourceManager.GetString("MorseDecoder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Morse Encoder.
+        /// </summary>
+        internal static string MorseEncoder {
+            get {
+                return ResourceManager.GetString("MorseEncoder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reverse String.
         /// </summary>
         internal static string ReverseString {
@@ -264,6 +291,24 @@ namespace StringConverter.Resources {
         internal static string STRINGFUNCTIONS {
             get {
                 return ResourceManager.GetString("STRINGFUNCTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TEXT STYLES.
+        /// </summary>
+        internal static string TextStyle {
+            get {
+                return ResourceManager.GetString("TextStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text to ASCII.
+        /// </summary>
+        internal static string TextToAscii {
+            get {
+                return ResourceManager.GetString("TextToAscii", resourceCulture);
             }
         }
         

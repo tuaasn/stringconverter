@@ -97,6 +97,12 @@ namespace StringConverter.Models
                     case 26:
                         name = Resource.EncoderCustomPassword;
                         break;
+                    case 28:
+                        name = Resource.MorseDecoder;
+                        break;
+                    case 29:
+                        name = Resource.MorseEncoder;
+                        break;
                 }
                 return name;
             }

@@ -14,10 +14,10 @@ namespace StringConverter.ViewModels
         private void ExecuteClickLabelCommand(object obj)
         {
             if (obj == null) return;
-            int fuction = 0;
-            int.TryParse(obj.ToString(), out fuction);
+            int function = 0;
+            int.TryParse(obj.ToString(), out function);
             bool isEncoded = false;
-            switch (fuction)
+            switch (function)
             {
                 case 2:
                 case 4:
@@ -36,12 +36,13 @@ namespace StringConverter.ViewModels
                 case 12:
                 case 14:
                 case 26:
+                case 29:
                     isEncoded = true;
                     break;
                 default:
                     break;
             }
-            switch (fuction)
+            switch (function)
             {
                 case 1:
                 case 2:
@@ -61,7 +62,9 @@ namespace StringConverter.ViewModels
                 case 22:
                 case 23:
                 case 24:
-                    Navigation.PushModalAsync(new NormalCodePage(fuction, isEncoded));
+                case 28:
+                case 29:
+                    Navigation.PushModalAsync(new NormalCodePage(function, isEncoded));
                     break;
                 case 9:
                 case 10:
@@ -71,13 +74,14 @@ namespace StringConverter.ViewModels
                 case 14:
                 case 25:
                 case 26:
-                    Navigation.PushModalAsync(new PasswordCodePage(fuction, isEncoded));
+                    Navigation.PushModalAsync(new PasswordCodePage(function, isEncoded));
+                    break;
+                case 27:
+                    Navigation.PushModalAsync(new TextStylePage());
                     break;
                 default:
                     break;
             }
-
-            
         }
     }
 }

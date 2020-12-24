@@ -2,6 +2,7 @@
 <ContentPage x:Class="StringConverter.Views.NormalCodePage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:StringConverter.Controls"
              xmlns:converters="clr-namespace:StringConverter.Converters">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -16,27 +17,45 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="10" Spacing="10">
-                <ImageButton Command="{Binding CopyCommand}"
-                             HorizontalOptions="End"
-                             Source="copy" />
-                <Editor AutoSize="TextChanges"
-                        HeightRequest="260"
-                        IsSpellCheckEnabled="False"
-                        Placeholder="{Binding IsEncoded, Converter={StaticResource firstText}}"
-                        Text="{Binding SourceText}" />
+                <Grid ColumnDefinitions="15*,*">
+                    <StackLayout Grid.Column="1"
+                                 Spacing="20"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Start">
+                        <ImageButton Command="{Binding PasteCommand}"
+                                     HorizontalOptions="Center"
+                                     Source="clipboard" />
+                        <ImageButton Command="{Binding CleanCommand}"
+                                     HorizontalOptions="Center"
+                                     Source="clean" />
+                    </StackLayout>
+                    <controls:EditEntry Grid.Column="0"
+                                        AutoSize="TextChanges"
+                                        HeightRequest="260"
+                                        IsSpellCheckEnabled="False"
+                                        Placeholder="{Binding IsEncoded, Converter={StaticResource firstText}}"
+                                        Text="{Binding SourceText}" />
+                </Grid>
                 <Button BackgroundColor="#539AF0"
                         Command="{Binding ProcessCommand}"
                         CornerRadius="3"
+                        HeightRequest="40"
                         HorizontalOptions="End"
-                        Text="{Binding EncodedState}" />
-                <ImageButton Command="{Binding CopyCommand}"
-                             HorizontalOptions="End"
-                             Source="copy" />
-                <Editor AutoSize="TextChanges"
-                        HeightRequest="260"
-                        IsSpellCheckEnabled="False"
-                        Placeholder="{Binding IsEncoded, Converter={StaticResource secondText}}"
-                        Text="{Binding DestinationText}" />
+                        Text="{Binding EncodedState}"
+                        WidthRequest="120" />
+                <Grid ColumnDefinitions="15*,*">
+                    <ImageButton Grid.Column="1"
+                                 Command="{Binding CopyCommand}"
+                                 VerticalOptions="Start"
+                                 HorizontalOptions="End"
+                                 Source="copy" />
+                    <controls:EditEntry Grid.Column="0"
+                                        AutoSize="TextChanges"
+                                        HeightRequest="260"
+                                        IsSpellCheckEnabled="False"
+                                        Placeholder="{Binding IsEncoded, Converter={StaticResource secondText}}"
+                                        Text="{Binding DestinationText}" />
+                </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

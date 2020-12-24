@@ -159,6 +159,14 @@ namespace StringConverter.Utility
                 case 24:
                     result = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(sourceText.ToLower());
                     break;
+                case 28:
+                    if (!Morse.IsInit()) Morse.InitializeDictionary();
+                    result = Morse.Decode(sourceText);
+                    break;
+                case 29:
+                    if (!Morse.IsInit()) Morse.InitializeDictionary();
+                    result = Morse.Encode(sourceText.ToUpper());
+                    break;
                 default:
                     break;
             }
@@ -199,6 +207,14 @@ namespace StringConverter.Utility
                     break;
             }
             return result;
+        }
+
+        public static string ConvertAscii(string sourceText)
+        {
+            TextToBitmap textToBitmap = new TextToBitmap();
+            textToBitmap.Input = sourceText;
+            var bit = textToBitmap.GetBitmap();
+            return bit.ASCIIFilter();
         }
     }
 }

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="StringConverter.Views.TextStylePage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:StringConverter.Controls">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="10" Spacing="10">
+                <ImageButton Command="{Binding CopyCommand}"
+                             HorizontalOptions="End"
+                             Source="copy" />
+                <controls:EditEntry AutoSize="TextChanges"
+                                    HeightRequest="260"
+                                    IsSpellCheckEnabled="False"
+                                    Placeholder="Paste the text you wish to convert here"
+                                    Text="{Binding SourceText}" />
+                <Button BackgroundColor="#539AF0"
+                        Command="{Binding ProcessCommand}"
+                        CornerRadius="3"
+                        HorizontalOptions="End"
+                        Text="Convert" />
+                <ImageButton Command="{Binding CopyCommand}"
+                             HorizontalOptions="End"
+                             Source="copy" />
+                <controls:EditEntry AutoSize="TextChanges"
+                                    HeightRequest="260"
+                                    IsSpellCheckEnabled="False"
+                                    Placeholder="Copy your converted text here:"
+                                    Text="{Binding DestinationText}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

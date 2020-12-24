@@ -152,6 +152,32 @@
                         </StackLayout>
                     </Frame>
                 </StackLayout>
+                <!--<StackLayout Margin="0,15">
+                    <Frame>
+                        <StackLayout>
+                            <controls:LabelExtension Style="{StaticResource titleText}" Text="{x:Static resources:Resource.TextStyle}" />
+                            <controls:LabelExtension ClickCommand="{Binding ClickLabelCommand}"
+                                                     FunctionCode="27"
+                                                     Style="{StaticResource detailText}"
+                                                     Text="{x:Static resources:Resource.TextToAscii}" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>-->
+                <StackLayout Margin="0,15">
+                    <Frame>
+                        <StackLayout>
+                            <controls:LabelExtension Style="{StaticResource titleText}" Text="{x:Static resources:Resource.Morse}" />
+                            <controls:LabelExtension ClickCommand="{Binding ClickLabelCommand}"
+                                                     FunctionCode="28"
+                                                     Style="{StaticResource detailText}"
+                                                     Text="{x:Static resources:Resource.MorseDecoder}" />
+                            <controls:LabelExtension ClickCommand="{Binding ClickLabelCommand}"
+                                                     FunctionCode="29"
+                                                     Style="{StaticResource detailText}"
+                                                     Text="{x:Static resources:Resource.MorseEncoder}" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

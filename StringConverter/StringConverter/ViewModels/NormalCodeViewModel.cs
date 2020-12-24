@@ -18,6 +18,8 @@ namespace StringConverter.ViewModels
         {
             ProcessCommand = new Command(ExecuteProcessCommand);
             CopyCommand = new Command(ExecuteCopyCommand);
+            PasteCommand = new Command(ExecutePasteCommand);
+            CleanCommand = new Command(ExecuteCleanCommand);
         }
         public History History { get => history; set => SetProperty(ref history, value); }
 
@@ -39,6 +41,8 @@ namespace StringConverter.ViewModels
 
         public Command ProcessCommand { get; set; }
         public Command CopyCommand { get; set; }
+        public Command PasteCommand { get; set; }
+        public Command CleanCommand { get; set; }
         public virtual async void ExecuteProcessCommand()
         {
             DestinationText = ConvertTool.ConvertNormal(FunctionCode, SourceText);
@@ -53,6 +57,15 @@ namespace StringConverter.ViewModels
             await Clipboard.SetTextAsync(destinationText);
         }
 
+        private async void ExecutePasteCommand()
+        {
+            SourceText = await Clipboard.GetTextAsync();
+        }
+        private void ExecuteCleanCommand()
+        {
+            SourceText = "";
+        }
+
         public override async Task OnLoadAsync()
         {
             IsBusy = true;
@@ -61,10 +74,6 @@ namespace StringConverter.ViewModels
                 SourceText = history.SrcText;
                 FunctionCode = history.Method;
                 DestinationText = history.DesText;
-            }
-            else if (Clipboard.HasText)
-            {
-                SourceText = await Clipboard.GetTextAsync();
             }
 
             if (!SQLiteProvider.Instace.IsInit)

@@ -10,6 +10,7 @@ namespace StringConverter.ViewModels
     public class HistoryViewModel : BaseViewModel
     {
         private History selectHistory;
+        private bool isLoad = false;
 
         public HistoryViewModel()
         {
@@ -44,6 +45,7 @@ namespace StringConverter.ViewModels
                     case 12:
                     case 14:
                     case 26:
+                    case 29:
                         isEncoded = true;
                         break;
                     default:
@@ -69,6 +71,8 @@ namespace StringConverter.ViewModels
                     case 22:
                     case 23:
                     case 24:
+                    case 28:
+                    case 29:
                         Navigation.PushModalAsync(new NormalCodePage(value.Method, isEncoded, value));
                         break;
                     case 9:
@@ -96,14 +100,22 @@ namespace StringConverter.ViewModels
             Histories = await SQLiteProvider.Instace.GetAllHistory();
             OnPropertyChanged("Histories");
         }
+        private async Task LoadData()
+        {
+            Histories = await SQLiteProvider.Instace.GetAllHistory();
+            OnPropertyChanged("Histories");
+        }
         public override async Task OnLoadAsync()
         {
             if (!SQLiteProvider.Instace.IsInit)
             {
                 await SQLiteProvider.Instace.InitDatabase();
             }
-            Histories = await SQLiteProvider.Instace.GetAllHistory();
-            OnPropertyChanged("Histories");
+            if (!isLoad)
+            {
+                await LoadData();
+                isLoad = true;
+            }
         }
     }
 }
