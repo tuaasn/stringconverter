@@ -1,4 +1,5 @@
-﻿using StringConverter.Models;
+﻿using StringConverter.Dependency;
+using StringConverter.Models;
 using StringConverter.Services;
 using StringConverter.Utility;
 using System.Threading.Tasks;
@@ -55,6 +56,7 @@ namespace StringConverter.ViewModels
         private async void ExecuteCopyCommand()
         {
             await Clipboard.SetTextAsync(destinationText);
+            DependencyService.Get<IToast>().Toast("Copied");
         }
 
         private async void ExecutePasteCommand()
