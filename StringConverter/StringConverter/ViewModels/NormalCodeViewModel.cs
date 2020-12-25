@@ -1,5 +1,6 @@
 ﻿using StringConverter.Dependency;
 using StringConverter.Models;
+using StringConverter.Resources;
 using StringConverter.Services;
 using StringConverter.Utility;
 using System.Threading.Tasks;
@@ -96,6 +97,17 @@ namespace StringConverter.ViewModels
         {
             get
             {
+                switch (FunctionCode)
+                {
+                    case 21:
+                        return Resource.ReverseString;
+                    case 22:
+                        return Resource.UpperCaseString;
+                    case 23:
+                        return Resource.LowerCaseString;
+                    case 24:
+                        return Resource.TitleCaseString;
+                }
                 return isEncoded ? "Encode" : "Decode";
             }
         }

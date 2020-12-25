@@ -19,8 +19,8 @@
             <StackLayout Margin="10" Spacing="10">
                 <Grid ColumnDefinitions="15*,*">
                     <StackLayout Grid.Column="1"
-                                 Spacing="20"
                                  HorizontalOptions="Center"
+                                 Spacing="20"
                                  VerticalOptions="Start">
                         <ImageButton Command="{Binding PasteCommand}"
                                      HorizontalOptions="Center"
@@ -41,14 +41,13 @@
                         CornerRadius="3"
                         HeightRequest="40"
                         HorizontalOptions="End"
-                        Text="{Binding EncodedState}"
-                        WidthRequest="120" />
+                        Text="{Binding EncodedState}" />
                 <Grid ColumnDefinitions="15*,*">
                     <ImageButton Grid.Column="1"
                                  Command="{Binding CopyCommand}"
-                                 VerticalOptions="Start"
                                  HorizontalOptions="End"
-                                 Source="copy" />
+                                 Source="copy"
+                                 VerticalOptions="Start" />
                     <controls:EditEntry Grid.Column="0"
                                         AutoSize="TextChanges"
                                         HeightRequest="260"
