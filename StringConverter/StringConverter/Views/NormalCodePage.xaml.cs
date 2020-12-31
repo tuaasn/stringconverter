@@ -22,11 +22,14 @@ namespace StringConverter.Views
         protected override void OnAppearing()
         {
             ((BaseViewModel)BindingContext).OnLoadAsync();
+            Shell.SetNavBarIsVisible(this, true);
+            Shell.SetTabBarIsVisible(this, false);
             base.OnAppearing();
         }
         protected override void OnDisappearing()
         {
             ((BaseViewModel)BindingContext).UnLoadAsync();
+
             base.OnDisappearing();
         }
     }

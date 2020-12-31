@@ -22,7 +22,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="0,30">
             <CollectionView ItemsSource="{Binding Histories}"
                             SelectedItem="{Binding SelectHistory}"
                             SelectionMode="Single">

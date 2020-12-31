@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="X5k-f2-b5h">
-    <device id="retina5_5" orientation="portrait"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="X5k-f2-b5h">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,22 +15,22 @@
                         <viewControllerLayoutGuide type="bottom" id="9ZL-r4-8FZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yd7-JS-zBw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.37647058823529411" blue="1" alpha="1"/>
-                        <color key="backgroundColor" colorSpace="calibratedRGB" red="0.3254901960784314" green="0.603921568627451" blue="0.9411764705882353" alpha="1"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="221" image="ic_launch.png" tag="0.0" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="130" y="290.5" width="154" height="155"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_launch.png" translatesAutoresizingMaskIntoConstraints="NO" id="221">
+                                <rect key="frame" x="130" y="370.5" width="154" height="155"/>
                                 <constraints>
-                                    <constraint id="222" firstAttribute="width" constant="154"/>
-                                    <constraint id="223" firstAttribute="height" constant="155"/>
+                                    <constraint firstAttribute="width" constant="154" id="222"/>
+                                    <constraint firstAttribute="height" constant="155" id="223"/>
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <color key="backgroundColor" red="0.31916800140000001" green="0.59185647959999999" blue="0.92433643340000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.27761116619999998" green="0.65121179819999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint id="230" firstItem="221" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY"/>
-                            <constraint id="231" firstItem="221" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX"/>
+                            <constraint firstItem="221" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" id="230"/>
+                            <constraint firstItem="221" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX" id="231"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -41,6 +41,6 @@
     </scenes>
     <color key="tintColor" red="0.039215686274509803" green="0.37647058823529411" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
-        <image name="ic_launch.png" width="155" height="154"/>
+        <image name="ic_launch.png" width="256" height="256"/>
     </resources>
 </document>

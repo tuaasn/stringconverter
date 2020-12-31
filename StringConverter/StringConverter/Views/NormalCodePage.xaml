@@ -15,9 +15,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Margin="10" Spacing="10">
-                <Grid ColumnDefinitions="15*,*">
+            <Grid Margin="20" RowDefinitions="5*,*,5*">
+                <Grid ColumnDefinitions="15*,*" Grid.Row="0">
                     <StackLayout Grid.Column="1"
                                  HorizontalOptions="Center"
                                  Spacing="20"
@@ -30,32 +29,30 @@
                                      Source="clean" />
                     </StackLayout>
                     <controls:EditEntry Grid.Column="0"
-                                        AutoSize="TextChanges"
-                                        HeightRequest="260"
                                         IsSpellCheckEnabled="False"
                                         Placeholder="{Binding IsEncoded, Converter={StaticResource firstText}}"
                                         Text="{Binding SourceText}" />
                 </Grid>
                 <Button BackgroundColor="#539AF0"
+                        Grid.Row="1"
+                        Padding="5,0"
                         Command="{Binding ProcessCommand}"
                         CornerRadius="3"
                         HeightRequest="40"
+                        VerticalOptions="Center"
                         HorizontalOptions="End"
                         Text="{Binding EncodedState}" />
-                <Grid ColumnDefinitions="15*,*">
+                <Grid ColumnDefinitions="15*,*" Grid.Row="2">
                     <ImageButton Grid.Column="1"
                                  Command="{Binding CopyCommand}"
                                  HorizontalOptions="End"
                                  Source="copy"
                                  VerticalOptions="Start" />
                     <controls:EditEntry Grid.Column="0"
-                                        AutoSize="TextChanges"
-                                        HeightRequest="260"
                                         IsSpellCheckEnabled="False"
                                         Placeholder="{Binding IsEncoded, Converter={StaticResource secondText}}"
                                         Text="{Binding DestinationText}" />
                 </Grid>
-            </StackLayout>
-        </ScrollView>
+            </Grid>
     </ContentPage.Content>
 </ContentPage>
