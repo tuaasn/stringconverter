@@ -73,7 +73,7 @@ namespace StringConverter.ViewModels
                     case 24:
                     case 28:
                     case 29:
-                        Navigation.PushModalAsync(new NormalCodePage(value.Method, isEncoded, value));
+                        Navigation.PushAsync(new NormalCodePage(value.Method, isEncoded, value));
                         break;
                     case 9:
                     case 10:
@@ -83,7 +83,7 @@ namespace StringConverter.ViewModels
                     case 14:
                     case 25:
                     case 26:
-                        Navigation.PushModalAsync(new PasswordCodePage(value.Method, isEncoded, value));
+                        Navigation.PushAsync(new PasswordCodePage(value.Method, isEncoded, value));
                         break;
                     default:
                         break;

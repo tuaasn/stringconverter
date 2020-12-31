@@ -64,7 +64,7 @@ namespace StringConverter.ViewModels
                 case 24:
                 case 28:
                 case 29:
-                    Navigation.PushModalAsync(new NormalCodePage(function, isEncoded));
+                    Navigation.PushAsync(new NormalCodePage(function, isEncoded));
                     break;
                 case 9:
                 case 10:
@@ -74,10 +74,10 @@ namespace StringConverter.ViewModels
                 case 14:
                 case 25:
                 case 26:
-                    Navigation.PushModalAsync(new PasswordCodePage(function, isEncoded));
+                    Navigation.PushAsync(new PasswordCodePage(function, isEncoded));
                     break;
                 case 27:
-                    Navigation.PushModalAsync(new TextStylePage());
+                    Navigation.PushAsync(new TextStylePage());
                     break;
                 default:
                     break;
