@@ -15,44 +15,44 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-            <Grid Margin="20" RowDefinitions="5*,*,5*">
-                <Grid ColumnDefinitions="15*,*" Grid.Row="0">
-                    <StackLayout Grid.Column="1"
+        <Grid Margin="15" RowDefinitions="5*,*,5*">
+            <Grid Grid.Row="0" ColumnDefinitions="15*,*">
+                <StackLayout Grid.Column="1"
+                             HorizontalOptions="Center"
+                             Spacing="20"
+                             VerticalOptions="Start">
+                    <ImageButton Command="{Binding PasteCommand}"
                                  HorizontalOptions="Center"
-                                 Spacing="20"
-                                 VerticalOptions="Start">
-                        <ImageButton Command="{Binding PasteCommand}"
-                                     HorizontalOptions="Center"
-                                     Source="clipboard" />
-                        <ImageButton Command="{Binding CleanCommand}"
-                                     HorizontalOptions="Center"
-                                     Source="clean" />
-                    </StackLayout>
-                    <controls:EditEntry Grid.Column="0"
-                                        IsSpellCheckEnabled="False"
-                                        Placeholder="{Binding IsEncoded, Converter={StaticResource firstText}}"
-                                        Text="{Binding SourceText}" />
-                </Grid>
-                <Button BackgroundColor="#539AF0"
-                        Grid.Row="1"
-                        Padding="5,0"
-                        Command="{Binding ProcessCommand}"
-                        CornerRadius="3"
-                        HeightRequest="40"
-                        VerticalOptions="Center"
-                        HorizontalOptions="End"
-                        Text="{Binding EncodedState}" />
-                <Grid ColumnDefinitions="15*,*" Grid.Row="2">
-                    <ImageButton Grid.Column="1"
-                                 Command="{Binding CopyCommand}"
-                                 HorizontalOptions="End"
-                                 Source="copy"
-                                 VerticalOptions="Start" />
-                    <controls:EditEntry Grid.Column="0"
-                                        IsSpellCheckEnabled="False"
-                                        Placeholder="{Binding IsEncoded, Converter={StaticResource secondText}}"
-                                        Text="{Binding DestinationText}" />
-                </Grid>
+                                 Source="clipboard" />
+                    <ImageButton Command="{Binding CleanCommand}"
+                                 HorizontalOptions="Center"
+                                 Source="clean" />
+                </StackLayout>
+                <controls:EditEntry Grid.Column="0"
+                                    IsSpellCheckEnabled="False"
+                                    Placeholder="{Binding IsEncoded, Converter={StaticResource firstText}}"
+                                    Text="{Binding SourceText}" />
             </Grid>
+            <Button Grid.Row="1"
+                    Padding="5,0"
+                    BackgroundColor="#539AF0"
+                    Command="{Binding ProcessCommand}"
+                    CornerRadius="3"
+                    HeightRequest="40"
+                    HorizontalOptions="End"
+                    Text="{Binding EncodedState}"
+                    VerticalOptions="Center" />
+            <Grid Grid.Row="2" ColumnDefinitions="15*,*">
+                <ImageButton Grid.Column="1"
+                             Command="{Binding CopyCommand}"
+                             HorizontalOptions="End"
+                             Source="copy"
+                             VerticalOptions="Start" />
+                <controls:EditEntry Grid.Column="0"
+                                    IsSpellCheckEnabled="False"
+                                    Placeholder="{Binding IsEncoded, Converter={StaticResource secondText}}"
+                                    Text="{Binding DestinationText}" />
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
