@@ -149,6 +149,15 @@
                                                      FunctionCode="24"
                                                      Style="{StaticResource detailText}"
                                                      Text="{x:Static resources:Resource.TitleCaseString}" />
+                            
+                            <controls:LabelExtension ClickCommand="{Binding ClickLabelCommand}"
+                                                     FunctionCode="30"
+                                                     Style="{StaticResource detailText}"
+                                                     Text="{x:Static resources:Resource.TextToBinary}" />
+                            <controls:LabelExtension ClickCommand="{Binding ClickLabelCommand}"
+                                                     FunctionCode="31"
+                                                     Style="{StaticResource detailText}"
+                                                     Text="{x:Static resources:Resource.BinaryToText}" />
                         </StackLayout>
                     </Frame>
                 </StackLayout>

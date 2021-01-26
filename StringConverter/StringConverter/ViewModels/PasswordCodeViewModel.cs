@@ -10,14 +10,23 @@ namespace StringConverter.ViewModels
         public string Password { get => password; set => SetProperty(ref password, value); }
         public override async void ExecuteProcessCommand()
         {
-            if (string.IsNullOrEmpty(password)) return;
-            DestinationText = ConvertTool.ConvertIncludePassword(FunctionCode, SourceText, Password);
-            if (history == null) history = new Models.History();
-            history.SrcText = SourceText;
-            history.DesText = DestinationText;
-            history.Password = password;
-            history.Method = FunctionCode;
-            await SQLiteProvider.Instace.InsertOrUpdate(history);
+            try
+            {
+                if (string.IsNullOrEmpty(password)) return;
+                DestinationText = ConvertTool.ConvertIncludePassword(FunctionCode, SourceText, Password);
+                if (history == null) history = new Models.History();
+                history.SrcText = SourceText;
+                history.DesText = DestinationText;
+                history.Password = password;
+                history.Method = FunctionCode;
+                await SQLiteProvider.Instace.InsertOrUpdate(history);
+                IsError = false;
+            }
+            catch
+            {
+                IsError = true;
+            }
+
         }
 
         public override async Task OnLoadAsync()

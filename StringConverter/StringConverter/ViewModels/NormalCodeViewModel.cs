@@ -15,6 +15,7 @@ namespace StringConverter.ViewModels
         private string destinationText;
         private bool isEncoded;
         protected History history;
+        private bool isError = false;
 
         public NormalCodeViewModel()
         {
@@ -40,6 +41,14 @@ namespace StringConverter.ViewModels
             }
         }
         public int FunctionCode { get; set; }
+        public bool IsError
+        {
+            get => isError; set
+            {
+                isError = value;
+                OnPropertyChanged("IsError");
+            }
+        }
 
         public Command ProcessCommand { get; set; }
         public Command CopyCommand { get; set; }
@@ -47,12 +56,20 @@ namespace StringConverter.ViewModels
         public Command CleanCommand { get; set; }
         public virtual async void ExecuteProcessCommand()
         {
-            DestinationText = ConvertTool.ConvertNormal(FunctionCode, SourceText);
-            if (history == null) history = new History();
-            history.SrcText = SourceText;
-            history.DesText = destinationText;
-            history.Method = FunctionCode;
-            await SQLiteProvider.Instace.InsertOrUpdate(history);
+            try
+            {
+                DestinationText = ConvertTool.ConvertNormal(FunctionCode, SourceText);
+                if (history == null) history = new History();
+                history.SrcText = SourceText;
+                history.DesText = destinationText;
+                history.Method = FunctionCode;
+                await SQLiteProvider.Instace.InsertOrUpdate(history);
+                IsError = false;
+            }
+            catch
+            {
+                IsError = true; DestinationText = "";
+            }
         }
         private async void ExecuteCopyCommand()
         {
@@ -72,7 +89,7 @@ namespace StringConverter.ViewModels
         public override async Task OnLoadAsync()
         {
             IsBusy = true;
-            if(history != null)
+            if (history != null)
             {
                 SourceText = history.SrcText;
                 FunctionCode = history.Method;
@@ -107,6 +124,10 @@ namespace StringConverter.ViewModels
                         return Resource.LowerCaseString;
                     case 24:
                         return Resource.TitleCaseString;
+                    case 30:
+                        return Resource.TextToBinary;
+                    case 31:
+                        return Resource.BinaryToText;
                 }
                 return isEncoded ? "Encode" : "Decode";
             }

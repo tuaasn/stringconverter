@@ -97,6 +97,15 @@ namespace StringConverter.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Binary To Text.
+        /// </summary>
+        internal static string BinaryToText {
+            get {
+                return ResourceManager.GetString("BinaryToText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Decoder with Custom Password.
         /// </summary>
         internal static string DecoderCustomPassword {
@@ -309,6 +318,15 @@ namespace StringConverter.Resources {
         internal static string TextToAscii {
             get {
                 return ResourceManager.GetString("TextToAscii", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text To Binary.
+        /// </summary>
+        internal static string TextToBinary {
+            get {
+                return ResourceManager.GetString("TextToBinary", resourceCulture);
             }
         }
         

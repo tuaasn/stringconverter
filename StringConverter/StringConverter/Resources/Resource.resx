@@ -129,6 +129,9 @@
   <data name="Base64Encoder" xml:space="preserve">
     <value>Base64 Encoder</value>
   </data>
+  <data name="BinaryToText" xml:space="preserve">
+    <value>Binary To Text</value>
+  </data>
   <data name="DecoderCustomPassword" xml:space="preserve">
     <value>Decoder with Custom Password</value>
   </data>
@@ -200,6 +203,9 @@
   </data>
   <data name="TextToAscii" xml:space="preserve">
     <value>Text to ASCII</value>
+  </data>
+  <data name="TextToBinary" xml:space="preserve">
+    <value>Text To Binary</value>
   </data>
   <data name="TitleCaseString" xml:space="preserve">
     <value>Title Case String</value>

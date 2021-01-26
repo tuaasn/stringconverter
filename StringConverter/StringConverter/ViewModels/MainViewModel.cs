@@ -64,6 +64,8 @@ namespace StringConverter.ViewModels
                 case 24:
                 case 28:
                 case 29:
+                case 30:
+                case 31:
                     Navigation.PushAsync(new NormalCodePage(function, isEncoded));
                     break;
                 case 9:

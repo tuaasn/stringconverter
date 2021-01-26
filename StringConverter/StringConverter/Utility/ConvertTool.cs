@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,7 @@ namespace StringConverter.Utility
             }
             else
             {
-                try
-                {
-                    return Encoding.UTF8.GetString(Convert.FromBase64String(s));
-                }
-                catch
-                {
-                    return string.Empty;
-                }
+                return Encoding.UTF8.GetString(Convert.FromBase64String(s));
             }
         }
         #region Comment
@@ -167,6 +161,13 @@ namespace StringConverter.Utility
                     if (!Morse.IsInit()) Morse.InitializeDictionary();
                     result = Morse.Encode(sourceText.ToUpper());
                     break;
+                case 30:
+                    result = ToBinary(ConvertToByteArray(sourceText, Encoding.UTF8));
+                    break;
+                case 31:
+                    var bytes = GetBytesFromBinaryString(sourceText);
+                    result = Encoding.UTF8.GetString(bytes);
+                    break;
                 default:
                     break;
             }
@@ -215,6 +216,28 @@ namespace StringConverter.Utility
             textToBitmap.Input = sourceText;
             var bit = textToBitmap.GetBitmap();
             return bit.ASCIIFilter();
+        }
+
+
+        public static byte[] ConvertToByteArray(string str, Encoding encoding)
+        {
+            return encoding.GetBytes(str);
+        }
+
+        public static string ToBinary(byte[] data)
+        {
+            return string.Join(" ", data.Select(byt => Convert.ToString(byt, 2).PadLeft(8, '0')));
+        }
+        public static byte[] GetBytesFromBinaryString(string binary)
+        {
+            binary = binary.Replace(" ", "");
+            var list = new List<byte>();
+            for (int i = 0; i < binary.Length; i += 8)
+            {
+                string t = binary.Substring(i, 8);
+                list.Add(Convert.ToByte(t, 2));
+            }
+            return list.ToArray();
         }
     }
 }

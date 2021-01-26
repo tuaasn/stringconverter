@@ -4,6 +4,7 @@ using Android.Util;
 using StringConverter.Controls;
 using StringConverter.Droid.Renderer;
 using System;
+using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -21,30 +22,44 @@ namespace StringConverter.Droid.Renderer
             base.OnElementChanged(e);
             if (e.NewElement != null)
             {
-                var view = (EditEntry)Element;
-                if (view.IsCurvedCornersEnabled)
-                {
-                    // creating gradient drawable for the curved background  
-                    var _gradientBackground = new GradientDrawable();
-                    _gradientBackground.SetShape(ShapeType.Rectangle);
-                    _gradientBackground.SetColor(view.BackgroundColor.ToAndroid());
-
-                    // Thickness of the stroke line  
-                    _gradientBackground.SetStroke(view.BorderWidth, view.BorderColor.ToAndroid());
-
-                    // Radius for the curves  
-                    _gradientBackground.SetCornerRadius(
-                        DpToPixels(this.Context, Convert.ToSingle(view.CornerRadius)));
-
-                    // set the background of the   
-                    Control.SetBackground(_gradientBackground);
-                }
-                // Set padding for the internal text from border  
-                Control.SetPadding(
-                    (int)DpToPixels(this.Context, Convert.ToSingle(12)), Control.PaddingTop,
-                    (int)DpToPixels(this.Context, Convert.ToSingle(12)), Control.PaddingBottom);
+                CreateControl();
             }
         }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+            if(e.PropertyName == "BorderColor" && Element != null)
+            {
+                CreateControl();
+            }
+        }
+        private void CreateControl()
+        {
+            var view = (EditEntry)Element;
+            if (view.IsCurvedCornersEnabled)
+            {
+                // creating gradient drawable for the curved background  
+                var _gradientBackground = new GradientDrawable();
+                _gradientBackground.SetShape(ShapeType.Rectangle);
+                _gradientBackground.SetColor(view.BackgroundColor.ToAndroid());
+
+                // Thickness of the stroke line  
+                _gradientBackground.SetStroke(view.BorderWidth, view.BorderColor.ToAndroid());
+
+                // Radius for the curves  
+                _gradientBackground.SetCornerRadius(
+                    DpToPixels(this.Context, Convert.ToSingle(view.CornerRadius)));
+
+                // set the background of the   
+                Control.SetBackground(_gradientBackground);
+            }
+            // Set padding for the internal text from border  
+            Control.SetPadding(
+                (int)DpToPixels(this.Context, Convert.ToSingle(12)), Control.PaddingTop,
+                (int)DpToPixels(this.Context, Convert.ToSingle(12)), Control.PaddingBottom);
+        }
+
         public static float DpToPixels(Context context, float valueInDp)
         {
             DisplayMetrics metrics = context.Resources.DisplayMetrics;

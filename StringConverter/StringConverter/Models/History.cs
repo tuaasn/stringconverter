@@ -103,6 +103,12 @@ namespace StringConverter.Models
                     case 29:
                         name = Resource.MorseEncoder;
                         break;
+                    case 30:
+                        name = Resource.TextToBinary;
+                        break;
+                    case 31:
+                        name = Resource.BinaryToText;
+                        break;
                 }
                 return name;
             }

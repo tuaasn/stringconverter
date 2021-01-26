@@ -12,6 +12,7 @@
             <converters:BooleanToStringConverter x:Key="secondText"
                                                  Text1="Copy your encoded text here:"
                                                  Text2="Copy your decoded text here:" />
+            <converters:BooleanToColorConverter x:Key="booleanToColorConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -29,6 +30,7 @@
                                  Source="clean" />
                 </StackLayout>
                 <controls:EditEntry Grid.Column="0"
+                                    BorderColor="{Binding IsError,Converter={StaticResource booleanToColorConverter}}"
                                     IsSpellCheckEnabled="False"
                                     Placeholder="{Binding IsEncoded, Converter={StaticResource firstText}}"
                                     Text="{Binding SourceText}" />
