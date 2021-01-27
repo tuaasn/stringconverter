@@ -23,7 +23,7 @@ namespace StringConverter.iOS.Renderer
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName == "BorderColorProperty" && Element != null)
+            if (e.PropertyName == "BorderColor" && Element != null)
             {
                 CreateControl();
             }

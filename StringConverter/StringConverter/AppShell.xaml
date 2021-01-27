@@ -3,6 +3,8 @@
        xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:views="clr-namespace:StringConverter.Views"
+       xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+       ios:Page.UseSafeArea="true"
        Shell.BackgroundColor="#0088CC"
        Shell.TitleColor="White"
        Shell.ForegroundColor="White"
